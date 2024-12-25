@@ -8,13 +8,14 @@ from joblib import load
 import pandas_ta as ta
 from sklearn.preprocessing import MinMaxScaler
 
+from .model_per_day import read_model_and_predict, train_and_save_model
+
 # from tensorflow.keras.models import load_model
 
 app = FastAPI()
 
 # Load your pre-trained LSTM model
 model = load("models/lstm_model.joblib")
-
 
 def preprocess_data(data):
     data.drop(['index'], axis= 1, inplace= True)
